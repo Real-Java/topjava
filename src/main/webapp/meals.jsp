@@ -33,26 +33,20 @@
         <td>&nbsp</td>
     </tr>
     <c:forEach items="${requestScope.mealsTo}" var="meal">
-        <c:choose>
-            <c:when test="${meal.isExcess() == true}">
-                <c:set var="col" value="red"/>
-            </c:when>
-            <c:when test="${meal.isExcess() == false}">
-                <c:set var="col" value="green"/>
-            </c:when>
-        </c:choose>
+
+        <c:set var="col" value="${meal.excess ? 'red': 'green'}"/>
 
         <tr style="color:${col}">
             <td>
-                <fmt:parseDate value="${meal.getDateTime()}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime"
+                <fmt:parseDate value="${meal.dateTime}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime"
                                type="both"/>
-                <fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${parsedDateTime}"/>
+                <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${parsedDateTime}"/>
             </td>
             <td>
-                    ${meal.getDescription()}
+                    ${meal.description}
             </td>
             <td>
-                    ${meal.getCalories()}
+                    ${meal.calories}
             </td>
             <td>
                 <a href="#">Update</a>
