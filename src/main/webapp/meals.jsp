@@ -9,6 +9,7 @@
         a {
             margin-bottom: 10px;
         }
+
         th, td {
             padding: 10px;
             border: 1px solid black;
@@ -16,13 +17,13 @@
     </style>
 </head>
 <body>
+
 <h3><a href="index.html">Home</a></h3>
 <hr>
 <h2>Meals</h2>
 <br>
-<a href="#">Add Meal</a>
-<br>
-<br>
+<a href="meals?action=add">Add Meal</a>
+<br><br>
 
 <table>
     <tr>
@@ -49,10 +50,10 @@
                     ${meal.calories}
             </td>
             <td>
-                <a href="#">Update</a>
+                <a href="meals?action=update&id=<c:out value="${meal.id}"/>">Update</a>
             </td>
             <td>
-                <a href="#">Delete</a>
+                <a href="meals?action=delete&id=<c:out value="${meal.id}"/>">Delete</a>
             </td>
         </tr>
     </c:forEach>
